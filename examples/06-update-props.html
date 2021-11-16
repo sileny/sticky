@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>useStickyClasses</title>
+  <style>
+    body,
+    html {
+      color: white;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      text-align: center;
+    }
+    main {
+      counter-reset: div;
+      display: flex;
+      height: 100%;
+      justify-content: space-between;
+      max-width: 100vw;
+      min-height: 2000px;
+      position: absolute;
+      top: 100px;
+      width: 100%;
+    }
+    .child {
+      padding: 1rem 0;
+      text-indent: 1rem;
+      width: 100%;
+    }
+    .parent {
+      height: 300px;
+      position: relative;
+      width: 100%;
+    }
+    .parent:nth-child(odd) {
+      background: tan;
+    }
+    .parent:nth-child(odd) .child {
+      background-color: red;
+    }
+    .parent:nth-child(even) {
+      background: aqua;
+    }
+    .parent:nth-child(even) .child {
+      background-color: green;
+    }
+    .parent:before {
+      counter-increment: div;
+      content: 'Parent 'counter(div);
+      left: 1rem;
+      position: absolute;
+      top: 1rem;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Sticky</h1>
+<div class="container">
+  <main id="main" class="main">
+    <div class="parent">
+      <div class="child">
+        <p>Child 1</p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../dist/index.js"></script>
+<script>
+  const stickybit = Sticky('.child', { useStickyClasses: true, stickyBitStickyOffset: 20 });
+  const parent = document.querySelector('.parent');
+
+  parent.style.top = '300px';
+
+  stickybit.update({ stickyBitStickyOffset: 100 });
+</script>
+</body>
+</html>

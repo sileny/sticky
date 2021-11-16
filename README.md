@@ -11,7 +11,7 @@ npm i @silen/sticky
 # usage
 
 ```ts
-import Stickt from '@silen/sticky';
+import Sticky from '@silen/sticky';
 
 const selector: string | Element = '.child';
 const option: {
