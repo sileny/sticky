@@ -32,3 +32,5 @@ const option: {
 
 const sticky = new Sticky(selector, option);
 ```
+
+[more examples](./examples/index.html)
